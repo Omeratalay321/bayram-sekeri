@@ -3,7 +3,7 @@ const noBtn = document.getElementById('noBtn');
 const yesBtn = document.getElementById('yesBtn');
 const question = document.querySelector('.question');
 const buttonsDiv = document.querySelector('.buttons');
-
+const resultLinkDiv = document.getElementById('resultLink');
 // --- BUTON KAÇIŞ FONKSİYONU ---
 // Hem fare hem dokunma olayları için kullanıyoruz.
 function moveNoBtn(e) {
@@ -36,8 +36,11 @@ yesBtn.addEventListener('click', function() {
     buttonsDiv.innerHTML = ''; 
     
     // Yeni bir "kazanma" mesajı yazıyoruz
-    question.textContent = 'Biliyordum! Seni Seviyorum! ❤️';
+    question.textContent = 'Biliyordum! Seni Seviyorum! ❤️'; 
+    
+    resultLinkDiv.style.display = 'block'; // Instagram linkini görünür yap  
     
     // Arka planı değiştirip zaferi belli ediyoruz
     document.body.style.backgroundColor = '#90ee90'; // Açık yeşil
 });
+
