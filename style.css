@@ -4,21 +4,35 @@ body {
     align-items: center; /* Dikeyde ortala */
     min-height: 100vh; /* Tüm ekranı kapla */
     margin: 0;
-    background-color: #f7f7f7; /* Açık gri arka plan */
     font-family: sans-serif;
     text-align: center;
+    color: #333;
+    
+    /* YENİ PEMBE ARKA PLAN VE KALP DESENİ */
+    background-color: #fce4ec; /* Çok soluk pembe (Ana renk) */
+    background-image: repeating-linear-gradient(
+        45deg, 
+        #f8bbd0, /* Biraz daha koyu pembe tonu */
+        #f8bbd0 10px, 
+        #fce4ec 10px, 
+        #fce4ec 20px /* Aradaki boşluk (soluk pembe) */
+    );
+    background-size: 40px 40px; /* Kalp deseninin tekrar boyutu */
 }
 
 .container {
     padding: 30px;
-    background-color: #fff; /* Beyaz kutu */
+    background-color: rgba(255, 255, 255, 0.9); /* Yarı saydam beyaz kutu */
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4); /* Pembe gölge */
+    max-width: 90%;
 }
 
 .question {
-    color: #ff69b4; /* Sıcak pembe yazı */
+    color: #ff69b4; /* Sıcak pembe yazı (Fuşya) */
     margin-bottom: 30px;
+    /* Kalp simgesini kullanarak daha şık bir başlık */
+    text-shadow: 1px 1px 2px rgba(255, 105, 180, 0.2); 
 }
 
 /* Butonların genel görünümü */
@@ -29,24 +43,43 @@ body {
     border-radius: 8px;
     font-size: 18px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease; /* Daha yumuşak geçişler */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Evet Butonu için renk */
 #yesBtn {
-    background-color: #5cb85c; /* Yeşil */
+    background-color: #ff69b4; /* Pembe Evet butonu */
     color: white;
+    font-weight: bold;
+    transform: scale(1.05); /* Daha dikkat çekici */
 }
 
 #yesBtn:hover {
-    background-color: #4cae4c;
+    background-color: #f7379d; /* Koyu pembe hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Hayır Butonu için renk */
 #noBtn {
-    background-color: #d9534f; /* Kırmızı */
-    color: white;
+    background-color: #eeeeee; /* Açık gri/beyaz Hayır butonu */
+    color: #ff69b4; /* Pembe yazı rengi */
+    border: 2px solid #ff69b4; /* Pembe kenarlık */
     /* ÖNEMLİ: Bu, JavaScript ile yerini değiştirebilmemiz için gerekli */
     position: absolute; 
     transition: all 0.2s ease; /* Kaçarken yumuşak hareket etmesi için */
+}
+
+#noBtn:hover {
+    background-color: #fff0f5; /* Hafif pembe hover */
+}
+
+/* Cevap verildikten sonra çıkan Instagram linki bölümü */
+#resultLink {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.2);
+}
+
 }
