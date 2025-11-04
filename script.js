@@ -4,21 +4,28 @@ const yesBtn = document.getElementById('yesBtn');
 const question = document.querySelector('.question');
 const buttonsDiv = document.querySelector('.buttons');
 
-
-// --- HAYIR BUTONU İŞLEMLERİ (KAÇIŞ SİHRİ) ---
-
-// 'Hayır' butonunun üzerine fare yaklaştığında çalışacak fonksiyon
-noBtn.addEventListener('mouseover', function() {
+// --- BUTON KAÇIŞ FONKSİYONU ---
+// Hem fare hem dokunma olayları için kullanıyoruz.
+function moveNoBtn(e) {
+    // Mobil cihazlarda varsayılan dokunma hareketini (kaydırma/zoom) engeller.
+    // Bu, butona dokunulduğunda hemen kaçmasını sağlar.
+    if (e && e.type === 'touchstart') {
+        e.preventDefault(); 
+    }
     
     // Rastgele yeni X (yatay) ve Y (dikey) koordinatları hesaplıyoruz
-    // Bu, butonun ekranın içinde rastgele bir yere zıplamasını sağlar
     const newX = Math.random() * (window.innerWidth - noBtn.clientWidth * 2); 
     const newY = Math.random() * (window.innerHeight - noBtn.clientHeight * 2);
     
     // Butonun yeni pozisyonunu belirliyoruz
     noBtn.style.left = newX + 'px';
     noBtn.style.top = newY + 'px';
-});
+}
+
+// --- HAYIR BUTONU İŞLEMLERİ (KAÇIŞ SİHRİ) ---
+// Fare (PC) ve DOKUNMA (MOBİL) olaylarında kaçması için dinliyoruz.
+noBtn.addEventListener('mouseover', moveNoBtn);
+noBtn.addEventListener('touchstart', moveNoBtn);
 
 
 // --- EVET BUTONU İŞLEMLERİ (KAZANMA ANI) ---
@@ -33,6 +40,4 @@ yesBtn.addEventListener('click', function() {
     
     // Arka planı değiştirip zaferi belli ediyoruz
     document.body.style.backgroundColor = '#90ee90'; // Açık yeşil
-    
-    // Eğer istersen buraya konfeti, balon gibi şeyler de eklenebilir!
 });
